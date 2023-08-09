@@ -1,0 +1,28 @@
+#include <stdio.h>
+
+int main() {
+    int numCount;
+    printf("Enter the number of elements: ");
+    scanf("%d", &numCount);
+
+    int numbers[numCount];
+
+    for (int i = 0; i < numCount; i++) {
+        printf("Enter number %d: ", i + 1);
+        scanf("%d", &numbers[i]);
+    }
+
+    printf("\nNumber   Type\n");
+    printf("---------------\n");
+
+    for (int i = 0; i < numCount; i++) {
+        if (numbers[i] % 2 == 0) {
+            printf("%-9d Even\n", numbers[i]);
+        } else {
+            printf("%-9d Odd\n", numbers[i]);
+        }
+    }
+
+    return 0;
+}
+
