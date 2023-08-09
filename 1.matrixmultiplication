@@ -1,0 +1,55 @@
+#include <stdio.h>
+
+#define ROW_A 3
+#define COL_A 3
+#define ROW_B 3
+#define COL_B 3
+
+void matrixMultiplication(int A[][COL_A], int B[][COL_B], int C[][COL_B]) {
+    for (int i = 0; i < ROW_A; i++) {
+        for (int j = 0; j < COL_B; j++) {
+            C[i][j] = 0;
+            for (int k = 0; k < COL_A; k++) {
+                C[i][j] += A[i][k] * B[k][j];
+            }
+        }
+    }
+}
+
+void printMatrix(int mat[][COL_B], int rows, int cols) {
+    for (int i = 0; i < rows; i++) {
+        for (int j = 0; j < cols; j++) {
+            printf("%d ", mat[i][j]);
+        }
+        printf("\n");
+    }
+}
+
+int main() {
+    int matrixA[ROW_A][COL_A] = {
+        {1, 2, 3},
+        {4, 5, 6},
+        {7, 8, 9}
+    };
+
+    int matrixB[ROW_B][COL_B] = {
+        {9, 8, 7},
+        {6, 5, 4},
+        {3, 2, 1}
+    };
+
+    int resultMatrix[ROW_A][COL_B];
+
+    matrixMultiplication(matrixA, matrixB, resultMatrix);
+
+    printf("Matrix A:\n");
+    printMatrix(matrixA, ROW_A, COL_A);
+
+    printf("\nMatrix B:\n");
+    printMatrix(matrixB, ROW_B, COL_B);
+
+    printf("\nResultant Matrix C:\n");
+    printMatrix(resultMatrix, ROW_A, COL_B);
+
+    return 0;
+}
